@@ -20,4 +20,40 @@ public class CaelumConfig {
         STARTER_RITUAL_BIOME = SERVER_BUILDER.comment("The biome to use for the starting island ritual, like minecraft:plains. Providing nothing will not change the biome.").define("ritual_biome", "");
         SERVER_CONFIG = SERVER_BUILDER.build();
     }
+
+    public static String getStarterIslandRL() {
+        try {
+            String value = STARTER_ISLAND_RL.get();
+            return value != null && !value.isEmpty() ? value : "ars_caelum:starter_island";
+        } catch (Exception e) {
+            return "ars_caelum:starter_island";
+        }
+    }
+
+    public static List<Integer> getStarterRitualOffset() {
+        try {
+            List<Integer> value = STARTER_RITUAL_OFFSET.get();
+            return value != null && value.size() == 3 ? value : List.of(-7, -5, -9);
+        } catch (Exception e) {
+            return List.of(-7, -5, -9);
+        }
+    }
+
+    public static int getStarterRitualSource() {
+        try {
+            return STARTER_RITUAL_SOURCE.get();
+        } catch (Exception e) {
+            return 0;
+        }
+    }
+
+    public static String getStarterRitualBiome() {
+        try {
+            String value = STARTER_RITUAL_BIOME.get();
+            return value != null ? value : "";
+        } catch (Exception e) {
+            return "";
+        }
+    }
 }
+
