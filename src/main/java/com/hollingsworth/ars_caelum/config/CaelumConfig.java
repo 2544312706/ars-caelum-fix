@@ -1,10 +1,13 @@
 package com.hollingsworth.ars_caelum.config;
 
 import net.neoforged.neoforge.common.ModConfigSpec;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.List;
 
 public class CaelumConfig {
+    private static final Logger LOGGER = LogManager.getLogger();
     public static ModConfigSpec SERVER_CONFIG;
     public static ModConfigSpec.ConfigValue<String> STARTER_ISLAND_RL;
     public static ModConfigSpec.ConfigValue<List<Integer>> STARTER_RITUAL_OFFSET;
@@ -24,8 +27,9 @@ public class CaelumConfig {
     public static String getStarterIslandRL() {
         try {
             String value = STARTER_ISLAND_RL.get();
-            return value != null && !value.isEmpty() ? value : "ars_caelum:starter_island";
+            return !value.isEmpty() ? value : "ars_caelum:starter_island";
         } catch (Exception e) {
+            LOGGER.debug("Failed to get starter_island_rl config value, using default: ars_caelum:starter_island", e);
             return "ars_caelum:starter_island";
         }
     }
@@ -33,8 +37,9 @@ public class CaelumConfig {
     public static List<Integer> getStarterRitualOffset() {
         try {
             List<Integer> value = STARTER_RITUAL_OFFSET.get();
-            return value != null && value.size() == 3 ? value : List.of(-7, -5, -9);
+            return value.size() == 3 ? value : List.of(-7, -5, -9);
         } catch (Exception e) {
+            LOGGER.debug("Failed to get ritual_offset config value, using default: [-7, -5, -9]", e);
             return List.of(-7, -5, -9);
         }
     }
@@ -43,6 +48,7 @@ public class CaelumConfig {
         try {
             return STARTER_RITUAL_SOURCE.get();
         } catch (Exception e) {
+            LOGGER.debug("Failed to get ritual_source config value, using default: 0", e);
             return 0;
         }
     }
@@ -50,8 +56,9 @@ public class CaelumConfig {
     public static String getStarterRitualBiome() {
         try {
             String value = STARTER_RITUAL_BIOME.get();
-            return value != null ? value : "";
+            return !value.isEmpty() ? value : "";
         } catch (Exception e) {
+            LOGGER.debug("Failed to get ritual_biome config value, using default: ''", e);
             return "";
         }
     }
