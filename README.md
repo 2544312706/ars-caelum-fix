@@ -1,15 +1,22 @@
-# Ars-Nouveau-Example-Addon
+# Ars Caelum
 
-An example repository for making an addon for Ars Nouveau! See the wiki for more info.
+Ars Caelum is an Ars Nouveau addon for NeoForge on Minecraft 1.21.1.
 
-**Getting Started**
+## Release Notes
 
-* Fork this repo for a ready to build work space.
-* Join the Ars Nouveau discord to ask questions, get help, or get ideas.
+### 1.21.1-3.0.0-hotfix
 
-Some useful links for beginners:
-* https://mcforge.readthedocs.io/en/latest/
-* https://forge.gemwire.uk/wiki/
-* https://wiki.mcjty.eu/modding/index.php?title=Main_Page
-* https://github.com/baileyholl/Ars-Nouveau/tree/1.18.x/src/main/java/com/hollingsworth/arsnouveau/api (Full API documentation)
-* https://github.com/bernie-g/geckolib/wiki (Animation library used by Ars Nouveau, optional)
+- Fixed the server-side config correction loop that repeatedly logged `ars_caelum-server.toml is not correct. Correcting`.
+- Updated `starter_ritual.ritual_offset` config validation to accept numeric list values as parsed by NeoForge/NightConfig.
+- Adjusted release build dependency resolution so the hotfix jar can be built and published cleanly.
+
+## Development
+
+- Build the mod jar with `./gradlew jar` or `gradlew.bat jar`.
+- The release artifact is generated under `build/libs`.
+
+## Useful Links
+
+- https://github.com/baileyholl/Ars-Nouveau
+- https://github.com/baileyholl/Ars-Nouveau/tree/1.18.x/src/main/java/com/hollingsworth/arsnouveau/api
+- https://github.com/bernie-g/geckolib/wiki
