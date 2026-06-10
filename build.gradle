@@ -34,12 +34,18 @@ repositories {
         url = "https://maven.minecraftforge.net"
     }
     maven {
-        name = "OctoStudios"
-        url = uri("https://maven.octo-studios.com/releases")
-    }
-    maven {
         name = "Illusive Soulworks maven"
         url = "https://maven.theillusivec4.top/"
+        content {
+            includeGroup("top.theillusivec4.curios")
+        }
+    }
+    maven {
+        name = "OctoStudios"
+        url = uri("https://maven.octo-studios.com/releases")
+        content {
+            excludeGroup("top.theillusivec4.curios")
+        }
     }
     exclusiveContent {
         forRepository {
@@ -131,7 +137,7 @@ dependencies {
     implementation "mezz.jei:jei-${project.mc_version}-neoforge:${project.jei_version}"
 
     implementation 'com.github.glitchfiend:TerraBlender-neoforge:1.21-4.0.0.0'
-    implementation "top.theillusivec4.curios:curios-neoforge:${curios_version}+1.21"
+    implementation "top.theillusivec4.curios:curios-neoforge:${curios_version}"
 }
 
 jar {
